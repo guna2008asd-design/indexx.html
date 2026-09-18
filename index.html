@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Text and Textualities — Sahasra Guna</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sage:#E4E8E0;        /* page */
+    --pine:#183A32;        /* ink */
+    --pine-soft:#4E6B63;
+    --rose:#C6407A;        /* accent */
+    --rose-soft:#F0D3E0;
+    --line:rgba(24,58,50,.28);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){ --sage:#DEE3D9; --rose-soft:#EBCBDA; }
+  }
+  :root[data-theme="dark"]{ --sage:#DEE3D9; --rose-soft:#EBCBDA; }
+
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--sage);color:var(--pine);
+    font-family:"Space Grotesk",system-ui,sans-serif;
+    font-size:16.5px;line-height:1.6;
+  }
+  ::selection{background:var(--rose);color:#fff}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 32px}
+  a:focus-visible{outline:3px solid var(--rose);outline-offset:4px}
+
+  /* ---------- ring hero ---------- */
+  .hero{
+    min-height:92vh;
+    display:grid;place-items:center;
+    padding:60px 0 40px;
+    position:relative;
+  }
+  .ring{
+    position:relative;
+    width:min(78vmin,620px);
+    aspect-ratio:1;
+    display:grid;place-items:center;
+    border:1.5px solid var(--line);
+    border-radius:50%;
+  }
+  .ring::before{
+    content:"";position:absolute;inset:7%;
+    border:1.5px solid var(--line);border-radius:50%;
+  }
+  .ring .spin{
+    position:absolute;inset:-6%;
+    animation:turn 46s linear infinite;
+  }
+  @keyframes turn{to{transform:rotate(360deg)}}
+  @media (prefers-reduced-motion:reduce){ .ring .spin{animation:none} }
+  .ring .spin text{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:15px;font-weight:500;
+    fill:var(--pine-soft);
+    letter-spacing:.22em;
+  }
+  .core{text-align:center;max-width:70%;position:relative;z-index:2}
+  .core h1{
+    font-family:"Instrument Serif",Georgia,serif;
+    font-weight:400;
+    font-size:clamp(2.6rem,7.6vmin,4.6rem);
+    line-height:1;
+    margin:0 0 .35em;
+  }
+  .core h1 i{color:var(--rose)}
+  .core p{
+    margin:0 auto;max-width:26ch;
+    color:var(--pine-soft);font-size:.98rem;line-height:1.5;
+  }
+  .dot{
+    position:absolute;width:13px;height:13px;border-radius:50%;
+    background:var(--rose);
+  }
+  .dot.a{top:3%;left:50%;transform:translate(-50%,-50%)}
+  .dot.b{bottom:3%;left:50%;transform:translate(-50%,50%);background:var(--pine)}
+
+  .idline{
+    position:absolute;bottom:26px;left:0;right:0;
+    display:flex;justify-content:center;gap:10px 34px;flex-wrap:wrap;
+    font-size:.86rem;color:var(--pine-soft);
+  }
+  .idline b{font-weight:500;color:var(--pine)}
+
+  /* ---------- sections ---------- */
+  section{padding:84px 0}
+  .band{background:var(--pine);color:var(--sage)}
+  h2{
+    font-family:"Instrument Serif",Georgia,serif;
+    font-weight:400;font-size:clamp(1.9rem,4vw,2.7rem);
+    margin:0 0 .5em;line-height:1.1;
+  }
+  .lede{max-width:56ch;margin:0 0 1.1em;font-size:1.04rem}
+  .muted{color:var(--pine-soft)}
+  .band .muted{color:rgba(228,232,224,.72)}
+
+  /* essay: big circle + text */
+  .essay{display:grid;grid-template-columns:260px 1fr;gap:48px;align-items:center}
+  .essay .medal{
+    width:260px;aspect-ratio:1;border-radius:50%;
+    border:1.5px solid rgba(228,232,224,.45);
+    display:grid;place-items:center;text-align:center;
+    padding:30px;
+  }
+  .medal span{font-family:"Instrument Serif",serif;font-size:1.25rem;line-height:1.25;font-style:italic}
+  .essay h2{color:var(--sage)}
+  .btn{
+    display:inline-block;margin-top:18px;
+    background:var(--rose);color:#fff;text-decoration:none;
+    font-weight:700;font-size:.9rem;
+    padding:14px 30px;border-radius:999px;border:1.5px solid var(--rose);
+  }
+  .btn:hover{background:transparent;color:var(--rose-soft);border-color:var(--rose-soft)}
+
+  /* ---------- disc index ---------- */
+  .discs{
+    list-style:none;margin:34px 0 0;padding:0;
+    display:grid;grid-template-columns:repeat(5,1fr);gap:40px 28px;
+  }
+  .discs a{
+    display:block;text-decoration:none;color:inherit;text-align:center;
+  }
+  .discs .disc{
+    width:100%;aspect-ratio:1;border-radius:50%;
+    border:1.5px solid var(--line);
+    display:grid;place-items:center;
+    position:relative;
+    transition:background .18s ease,border-color .18s ease,color .18s ease;
+  }
+  .discs .disc b{
+    font-family:"Instrument Serif",serif;font-weight:400;
+    font-size:2.2rem;line-height:1;
+  }
+  .discs .disc small{
+    position:absolute;bottom:22%;
+    font-size:.68rem;letter-spacing:.14em;color:var(--pine-soft);
+    opacity:0;transition:opacity .18s ease;
+  }
+  .discs a:hover .disc,.discs a:focus-visible .disc{
+    background:var(--rose);border-color:var(--rose);color:#fff;
+  }
+  .discs a:hover .disc small,.discs a:focus-visible .disc small{opacity:1;color:rgba(255,255,255,.85)}
+  .discs .cap{
+    display:block;margin-top:14px;font-size:.92rem;line-height:1.35;
+  }
+  .discs .who{display:block;font-size:.76rem;color:var(--pine-soft);margin-top:4px}
+
+  footer{border-top:1px solid var(--line);padding:34px 0 46px}
+  footer p{margin:0;font-size:.88rem;color:var(--pine-soft);max-width:62ch}
+
+  @media (max-width:900px){
+    .discs{grid-template-columns:repeat(3,1fr);gap:32px 22px}
+    .essay{grid-template-columns:1fr;gap:28px;justify-items:start}
+    .essay .medal{width:200px}
+  }
+  @media (max-width:560px){
+    .wrap{padding:0 20px}
+    .discs{grid-template-columns:repeat(2,1fr)}
+    section{padding:58px 0}
+    .hero{min-height:auto;padding:44px 0 88px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="ring">
+    <svg class="spin" viewBox="0 0 400 400" aria-hidden="true">
+      <defs><path id="circlePath" d="M200,200 m-172,0 a172,172 0 1,1 344,0 a172,172 0 1,1 -344,0"/></defs>
+      <text><textPath href="#circlePath" startOffset="0%">CIA 3 · PORTFOLIO OF ANNOTATED READINGS · TEN TEXTS · ONE REFLECTION · CIA 3 · PORTFOLIO OF ANNOTATED READINGS · TEN TEXTS · ONE REFLECTION · </textPath></text>
+    </svg>
+    <span class="dot a"></span>
+    <span class="dot b"></span>
+    <div class="core">
+      <h1>Text and <i>Textualities</i></h1>
+      <p>“A text is not a line of words but a multi-dimensional space.”</p>
+    </div>
+  </div>
+  <div class="idline">
+    <span>Submitted by <b>Sahasra Guna</b></span>
+    <span>Roll no. <b>2633148</b></span>
+    <span><b>BA English</b></span>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>What is collected here</h2>
+    <p class="lede">Ten readings from one semester, each opening as a PDF with my marginal notes, underlining and questions left where I made them.</p>
+    <p class="lede muted">They are working notes rather than finished readings — a passage that caught me, a line I argued with, a place where one text answered another I had read weeks earlier.</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap essay">
+    <div class="medal"><span>Written after all ten</span></div>
+    <div>
+      <h2>From Text to Texts: A Learning Journey</h2>
+      <p class="lede muted">How the course moved me from thinking of a text as a book on a syllabus to reading speech, print, film and the feed as texts in their own right.</p>
+      <a class="btn" href="https://claude.ai/artifact/Nmgni9HkykGJ3YsWL67kEr" target="_blank" rel="noopener">Read the essay</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>The ten annotated texts</h2>
+    <p class="lede muted">In the order they were read. Tap a circle to open the PDF.</p>
+    <!-- replace each href="#" with the PDF link -->
+    <ol class="discs">
+      <li><a href="https://drive.google.com/file/d/110gu4XZOiLp1Qh36TOUc1_a7EtYQNxb4/view?usp=drive_link" target="_blank" rel="noopener"><span class="disc"><b>01</b><small>OPEN PDF</small></span><span class="cap">English Literature Academic Essay</span></a></li>
+      <li><a href="https://drive.google.com/file/d/1PIuQJmWb1hoOadw-YljZG8ZZmrj4qW4n/view?usp=drive_link" target="_blank" rel="noopener"><span class="disc"><b>02</b><small>OPEN PDF</small></span><span class="cap">To Be in Eng. Lit., Now That…<span class="who">The Voyage Out</span></span></a></li>
+      <li><a href="https://drive.google.com/file/d/1kE5WB9g2rhiPG7t4c6TdmPz5KERq7RzC/view?usp=drive_link" target="_blank" rel="noopener"><span class="disc"><b>03</b><small>OPEN PDF</small></span><span class="cap">English — Introduction</span></a></li>
+      <li><a href="https://drive.google.com/file/d/1TwoxuTh40_NJBmvlQbunQephTFBqE7Cp/view?usp=drive_link" target="_blank" rel="noopener"><span class="disc"><b>04</b><small>OPEN PDF</small></span><span class="cap">What Is Literature?<span class="who">Preface</span></span></a></li>
+      <li><a href="https://drive.google.com/file/d/1g3tXr9Mta9cuD7R3z0SIHc5M3URySIpj/view?usp=drive_link" target="_blank" rel="noopener"><span class="disc"><b>05</b><small>OPEN PDF</small></span><span class="cap">From Work to Text<span class="who">Barthes</span></span></a></li>
+      <li><a href="https://drive.google.com/file/d/1kLiDgnE9DbCO4xhVHHmb6s7S9ZNS6Bgc/view?usp=drive_link" target="_blank" rel="noopener"><span class="disc"><b>06</b><small>OPEN PDF</small></span><span class="cap">The Rustle of Language<span class="who">Barthes</span></span></a></li>
+      <li><a href="https://drive.google.com/file/d/1VeThUTUHZM3XihjLcCc230Zaw0RtonGy/view?usp=drive_link" target="_blank" rel="noopener"><span class="disc"><b>07</b><small>OPEN PDF</small></span><span class="cap">Understanding Media<span class="who">McLuhan</span></span></a></li>
+      <li><a href="https://drive.google.com/file/d/1BO2PKhd5fsqO6OoBfHcrHN_g745iBCcF/view?usp=drive_link" target="_blank" rel="noopener"><span class="disc"><b>08</b><small>OPEN PDF</small></span><span class="cap">Cybermohalla<span class="who">Nayar</span></span></a></li>
+      <li><a href="https://drive.google.com/file/d/17MqipPbUc2PwGZo10gVCtjBNe9wHQXZk/view?usp=drive_link" target="_blank" rel="noopener"><span class="disc"><b>09</b><small>OPEN PDF</small></span><span class="cap">Digital Technologies<span class="who">Peters</span></span></a></li>
+      <li><a href="https://drive.google.com/file/d/1KlB_Z8yNyUGxaLhtJ12_Z0u-2sOG2mxn/view?usp=drive_link" target="_blank" rel="noopener"><span class="disc"><b>10</b><small>OPEN PDF</small></span><span class="cap">Article<span class="who">Nicholas Carr</span></span></a></li>
+    </ol>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Submitted for Text and Textualities by Sahasra Guna, Roll no. 2633148, BA English. Continuous internal assessment 3.</p>
+  </div>
+</footer>
+
+</body>
+</html>

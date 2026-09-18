@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Literary & Digital Paradigms</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:#f2eee5;
+  color:#181818;
+  font-family:Manrope,Arial,sans-serif;
+}
+body.no-scroll{overflow:hidden}
+
+header{
+  min-height:92vh;
+  background:#171717;
+  color:#f6f1e8;
+  padding:25px 6vw 70px;
+  position:relative;
+  overflow:hidden;
+}
+nav{
+  display:flex;
+  justify-content:space-between;
+  border-bottom:1px solid #444;
+  padding-bottom:20px;
+}
+.logo{font:500 24px "DM Mono";letter-spacing:-2px}
+.logo b{color:#d96636}
+nav a{
+  color:#ddd;
+  text-decoration:none;
+  margin-left:28px;
+  font-size:12px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+.hero{
+  position:relative;
+  z-index:2;
+  padding-top:16vh;
+  max-width:1050px;
+}
+.label{
+  font:500 11px "DM Mono";
+  letter-spacing:2px;
+  text-transform:uppercase;
+  opacity:.7;
+}
+h1{
+  font-size:clamp(58px,10vw,140px);
+  line-height:.85;
+  letter-spacing:-7px;
+  margin:18px 0 35px;
+}
+h1 em{
+  font-family:"Playfair Display",serif;
+  font-weight:500;
+  letter-spacing:-5px;
+}
+.hero p{
+  max-width:620px;
+  line-height:1.8;
+  color:#bcb8b0;
+}
+.hero-button{
+  display:inline-block;
+  margin-top:25px;
+  padding:15px 22px;
+  border:1px solid #666;
+  color:white;
+  text-decoration:none;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+.circle{
+  position:absolute;
+  border:1px solid #333;
+  border-radius:50%;
+  width:55vw;
+  height:55vw;
+  right:-15vw;
+  top:12vh;
+}
+.circle.two{
+  width:35vw;
+  height:35vw;
+  right:4vw;
+  top:35vh;
+  border-style:dashed;
+}
+
+section{padding:115px 6vw}
+.section-title{max-width:720px;margin-bottom:55px}
+.section-title h2{
+  font-size:clamp(42px,6vw,78px);
+  line-height:.95;
+  letter-spacing:-4px;
+  margin:15px 0 20px;
+}
+.section-title p{
+  color:#6d6a64;
+  line-height:1.7;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+.card{
+  min-height:430px;
+  padding:34px;
+  color:white;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+}
+.card:nth-child(1){background:#a94d2b}
+.card:nth-child(2){background:#554487}
+.card:nth-child(3){background:#405a46}
+.card:nth-child(4){background:#3c5e78}
+.number{
+  position:absolute;
+  top:30px;
+  right:32px;
+  font:500 12px "DM Mono";
+}
+.card .label{opacity:.65}
+.card h3{
+  font-size:clamp(38px,5vw,65px);
+  line-height:.9;
+  letter-spacing:-3px;
+  margin:15px 0 20px;
+}
+.card p{
+  max-width:530px;
+  line-height:1.65;
+  font-size:14px;
+  opacity:.82;
+}
+.card button{
+  width:max-content;
+  border:0;
+  background:none;
+  color:white;
+  padding:13px 0 0;
+  cursor:pointer;
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.dark{
+  background:#1c1c1c;
+  color:#f4efe6;
+}
+.dark .section-title p{color:#aaa69e}
+
+.comparison{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:#444;
+}
+.comparison article{
+  background:#1c1c1c;
+  padding:32px;
+  min-height:230px;
+}
+.comparison article span{
+  font:500 10px "DM Mono";
+  color:#999;
+  letter-spacing:1.5px;
+}
+.comparison h3{font-size:24px;margin:20px 0 12px}
+.comparison p{color:#aaa;line-height:1.65;font-size:14px}
+
+.reflection{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:10vw;
+  align-items:center;
+}
+.reflection h2{
+  font-size:clamp(42px,6vw,75px);
+  line-height:.95;
+  letter-spacing:-4px;
+}
+.reflection p{color:#666;line-height:1.8}
+.quote{
+  border-left:2px solid #222;
+  padding-left:20px;
+  font:italic 21px "Playfair Display";
+  color:#333!important;
+}
+.visual{
+  height:430px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+}
+.ring{
+  position:absolute;
+  border:1px solid #aaa;
+  border-radius:50%;
+}
+.r1{width:410px;height:410px}
+.r2{width:285px;height:285px;border-style:dashed}
+.r3{width:165px;height:165px}
+.center{
+  text-align:center;
+  font:500 14px "DM Mono";
+  letter-spacing:2px;
+  z-index:2;
+}
+.center i{
+  font:500 25px "Playfair Display";
+  letter-spacing:0;
+}
+
+footer{
+  border-top:1px solid #ccc;
+  padding:25px 6vw;
+  display:flex;
+  justify-content:space-between;
+  color:#777;
+  font:10px "DM Mono";
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:rgba(0,0,0,.75);
+  backdrop-filter:blur(7px);
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+}
+.modal.open{display:flex}
+.modal-box{
+  width:min(850px,100%);
+  max-height:88vh;
+  overflow:auto;
+  background:#faf8f2;
+  padding:45px;
+  position:relative;
+}
+.close{
+  position:absolute;
+  right:20px;
+  top:12px;
+  border:0;
+  background:none;
+  font-size:35px;
+  cursor:pointer;
+}
+.modal-box h2{
+  font-size:clamp(42px,6vw,70px);
+  line-height:.9;
+  letter-spacing:-4px;
+  margin:15px 0;
+}
+.modal-intro{
+  color:#666;
+  line-height:1.7;
+  border-bottom:1px solid #ccc;
+  padding-bottom:25px;
+}
+.topic{
+  display:grid;
+  grid-template-columns:45px 1fr;
+  gap:15px;
+  padding:24px 0;
+  border-bottom:1px solid #ddd;
+}
+.topic small{font:11px "DM Mono";color:#888}
+.topic h4{margin:0 0 8px;font-size:19px}
+.topic p{margin:0;color:#555;line-height:1.7;font-size:14px}
+
+@media(max-width:760px){
+  nav div:last-child{display:none}
+  .cards,.comparison,.reflection{grid-template-columns:1fr}
+  h1{letter-spacing:-4px}
+  .card{min-height:390px}
+  .modal-box{padding:30px 22px}
+  .r1{width:330px;height:330px}
+  .r2{width:230px;height:230px}
+  .r3{width:140px;height:140px}
+  footer{display:block}
+  footer span{display:block;margin:7px 0}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <div class="logo">LDP<b>•</b></div>
+    <div>
+      <a href="#topics">Topics</a>
+      <a href="#comparison">Comparison</a>
+      <a href="#reflection">Reflection</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="label">Theory Reflection Sheet</div>
+    <h1>Literary &<br><em>Digital Paradigms</em></h1>
+    <p>
+      Explore four connected perspectives on literature, authorship,
+      colonial institutionalization, reading, and the cognitive effects
+      of digital technology.
+    </p>
+    <a class="hero-button" href="#topics">Explore Topics ↓</a>
+  </div>
+
+  <div class="circle"></div>
+  <div class="circle two"></div>
+</header>
+
+<section id="topics">
+  <div class="section-title">
+    <div class="label">Four Core Topics</div>
+    <h2>Choose a lens.</h2>
+    <p>
+      Each topic has its own section containing the concepts,
+      arguments, and takeaways from the provided reflection sheet.
+    </p>
+  </div>
+
+  <div class="cards">
+
+    <article class="card">
+      <div class="number">01</div>
+      <div class="label">Roland Barthes · 1968</div>
+      <h3>The Death<br>of the Author</h3>
+      <p>The author is no longer treated as the final source of meaning; the reader becomes central.</p>
+      <button onclick="showTopic('author')">Open topic →</button>
+    </article>
+
+    <article class="card">
+      <div class="number">02</div>
+      <div class="label">Roland Barthes · 1971</div>
+      <h3>From Work<br>to Text</h3>
+      <p>A comparison between the material Work and the active methodological field of the Text.</p>
+      <button onclick="showTopic('text')">Open topic →</button>
+    </article>
+
+    <article class="card">
+      <div class="number">03</div>
+      <div class="label">Gauri Viswanathan · Intro</div>
+      <h3>Masks<br>of Conquest</h3>
+      <p>The emergence of English literature is examined through colonial institutions and ideology.</p>
+      <button onclick="showTopic('masks')">Open topic →</button>
+    </article>
+
+    <article class="card">
+      <div class="number">04</div>
+      <div class="label">Nicholas Carr</div>
+      <h3>The<br>Shallows</h3>
+      <p>The Internet's relationship with attention, neuroplasticity, cognitive load, and deep reading.</p>
+      <button onclick="showTopic('carr')">Open topic →</button>
+    </article>
+
+  </div>
+</section>
+
+<section id="comparison" class="dark">
+  <div class="section-title">
+    <div class="label">Comparative Reflection</div>
+    <h2>Four theories.<br>One conversation.</h2>
+    <p>
+      The topics connect questions about who creates meaning,
+      how texts are produced, how literary study became institutionalized,
+      and how digital technology changes reading.
+    </p>
+  </div>
+
+  <div class="comparison">
+    <article>
+      <span>BARTHES</span>
+      <h3>Work → Text</h3>
+      <p>
+        The reader shifts from passive consumer toward active co-producer,
+        while meaning becomes plural and continually produced.
+      </p>
+    </article>
+
+    <article>
+      <span>CARR</span>
+      <h3>Deep Reading → Digital Skimming</h3>
+      <p>
+        The source connects internet use with distraction, cognitive load,
+        and changes in the conditions of sustained reading.
+      </p>
+    </article>
+
+    <article>
+      <span>VISWANATHAN</span>
+      <h3>Literature → Institution</h3>
+      <p>
+        Literary study is presented as historically connected to colonial
+        power and cultural authority in India.
+      </p>
+    </article>
+  </div>
+</section>
+
+<section id="reflection" class="reflection">
+  <div>
+    <div class="label">Final Reflection</div>
+    <h2>The modern reader is active — but not unlimited.</h2>
+    <p>
+      Barthes emphasizes the active role of the reader. Carr identifies
+      obstacles that digital environments can create for deep reading.
+      Viswanathan reminds us that the conditions of reading are also
+      historically and institutionally shaped.
+    </p>
+    <p class="quote">
+      “The challenge of the modern reader is to exercise critical
+      detachment while overcoming the obstacles to deep reading.”
+    </p>
+  </div>
+
+  <div class="visual">
+    <div class="ring r1"></div>
+    <div class="ring r2"></div>
+    <div class="ring r3"></div>
+    <div class="center">READ<br><i>CRITICALLY</i></div>
+  </div>
+</section>
+
+<footer>
+  <span>Literary & Digital Paradigms</span>
+  <span>Theory Reflection Project</span>
+</footer>
+
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <button class="close" onclick="closeTopic()">×</button>
+    <div class="label" id="modalLabel"></div>
+    <h2 id="modalTitle"></h2>
+    <p class="modal-intro" id="modalIntro"></p>
+    <div id="modalTopics"></div>
+  </div>
+</div>
+
+<script>
+const data = {
+
+author:{
+label:"01 · Roland Barthes · 1968",
+title:"The Death of the Author",
+intro:"Barthes' essay represents a major rupture in literary criticism, where the author's biography is no longer the basis of interpretation.",
+topics:[
+["From Author to Scriptor",
+"The figure of the Author is treated as a modern category that originates in the belief that he is the source of his work. Barthes instead uses the term Scriptor, who exists with the text rather than preceding it."],
+["Destruction of Voice",
+"Writing becomes a neutral, composite and oblique space in which the particularity or specificity of the speaker slips away."],
+["Fabric of Quotations",
+"The text is a multidimensional space in which a variety of writings amalgamate and contradict each other instead of revealing one unique Author-God meaning."],
+["The Reader as Unity",
+"The unity of the text comes from its point of destination, the reader, rather than its point of origin, the author."],
+["Key Takeaway",
+"Meaning is not simply found as something buried by an author; it is produced as the text is read."]
+]},
+
+text:{
+label:"02 · Roland Barthes · 1971",
+title:"From Work to Text",
+intro:"Barthes distinguishes the classical Work from the modern Text through several important features.",
+topics:[
+["Nature",
+"The Work is material and occupies a place in the library. The Text is a process of demonstration and a methodological field."],
+["Signification",
+"The Work searches for a final signified or meaning. The Text involves an infinite postponement of the signifier and radical multiplicity."],
+["Relation",
+"The Work is monologic and tied to filiation. The Text is paradigmatic: a set of citations and echoes."],
+["Reading Experience",
+"The Work encourages a passive consumer relationship. The Text makes the reader an active co-producer who plays the text."],
+["Key Takeaway",
+"The Text can be grasped in the activity of its production, marking a transition from a culture of consumption to a culture of play."]
+]},
+
+masks:{
+label:"03 · Gauri Viswanathan · Masks of Conquest",
+title:"Masks of Conquest",
+intro:"Viswanathan discusses the historical and ideological conditions behind the emergence of English literature as a discipline in colonial India.",
+topics:[
+["Political Domination",
+"English literature is presented as a means used by colonial administration to establish cultural power, including through consent generated by cultural capital."],
+["The Indian Experiment",
+"English literature was institutionalized as a discipline in India earlier than in English universities and aimed to fill a moral vacuum caused by religious neutrality."],
+["Secularism",
+"The pedagogy was secular and aimed to impart universal values described in the source as Western, namely Christian, without violating Company religious neutrality."],
+["Masking Effect",
+"The humanism associated with literature such as Shakespeare and Milton is presented as masking material exploitation and police brutality pursued by British administration."],
+["Key Takeaway",
+"The source challenges the idea that literary studies simply grew naturally and presents it as an instrument of socio-political transformation."]
+]},
+
+carr:{
+label:"04 · Nicholas Carr · The Shallows",
+title:"The Shallows",
+intro:"Carr examines the impact of Internet use on the brain, attention, memory, reading, and concentration.",
+topics:[
+["Neuroplasticity",
+"The brain is described as plastic and capable of being reshaped according to input. Regular internet surfing is presented as damaging circuits responsible for deep reading and creating superficial circuits."],
+["Cognitive Load Theory",
+"The Internet provides an extremely high bandwidth of information. The source argues that much of this information is not deeply processed, creating a cognitive bottleneck."],
+["Distraction Ecosystem",
+"Constant interruptions such as emails and hyperlinks can prevent a person from reaching a zone of deep concentration."],
+["Cognitive Trade-offs",
+"Enhanced capacities include speed, visual processing, and pattern detection. Damaged capacities include empathy, sustained attention, and conceptual thinking."],
+["Key Takeaway",
+"The source connects digital media with changes in reading habits and emphasizes the difficulty of maintaining deep reading in an interruption-rich environment."]
+]}
+};
+
+function showTopic(key){
+  const t=data[key];
+  document.getElementById("modalLabel").textContent=t.label;
+  document.getElementById("modalTitle").textContent=t.title;
+  document.getElementById("modalIntro").textContent=t.intro;
+
+  document.getElementById("modalTopics").innerHTML=t.topics.map((x,i)=>`
+    <div class="topic">
+      <small>0${i+1}</small>
+      <div>
+        <h4>${x[0]}</h4>
+        <p>${x[1]}</p>
+      </div>
+    </div>
+  `).join("");
+
+  document.getElementById("modal").classList.add("open");
+  document.body.classList.add("no-scroll");
+}
+
+function closeTopic(){
+  document.getElementById("modal").classList.remove("open");
+  document.body.classList.remove("no-scroll");
+}
+
+document.getElementById("modal").addEventListener("click",function(e){
+  if(e.target===this) closeTopic();
+});
+
+document.addEventListener("keydown",function(e){
+  if(e.key==="Escape") closeTopic();
+});
+</script>
+
+</body>
+</html>
